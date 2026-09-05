@@ -21,6 +21,21 @@ IFC-derived graph.
 The work is documented in *BIMConverse: Unlocking BIM Data for Everyone*, Chapter 16, by
 Libny Pacheco and Christoph Berkmiller.
 
+## Repository map
+
+This repository holds the **chat application only**. The rest of the work — the IFC-to-graph
+pipeline, the graph data and the experiments — lives in the thesis repository
+[`libnypacheco/thesis-iaac`](https://github.com/libnypacheco/thesis-iaac):
+
+| Where | What |
+|---|---|
+| [`thesis-iaac/10_IFC_TO_GRAPH`](https://github.com/libnypacheco/thesis-iaac/tree/main/10_IFC_TO_GRAPH) | Python pipeline converting IFC files into graph structures |
+| [`thesis-iaac/20_GRAPH-DATA`](https://github.com/libnypacheco/thesis-iaac/tree/main/20_GRAPH-DATA) | The resulting graph data |
+| [`thesis-iaac/30_GRAPH-RAG`](https://github.com/libnypacheco/thesis-iaac/tree/main/30_GRAPH-RAG) | Graph RAG experiments |
+| [`thesis-iaac/40_BIMCONVERSE_APP`](https://github.com/libnypacheco/thesis-iaac/tree/main/40_BIMCONVERSE_APP) | The app as developed during the thesis |
+| [`thesis-iaac/01_GH_SCRIPTS`](https://github.com/libnypacheco/thesis-iaac/tree/main/01_GH_SCRIPTS) | Grasshopper scripts |
+| **this repository** | The standalone BIMConverse chat app, adapted from NeoConverse |
+
 ---
 
 ## Why
@@ -49,7 +64,9 @@ The full workflow has two stages. **This repository is stage 2.**
 
 **Stage 1 — Graph building (external Python pipeline).** Revit models are exported to IFC
 with second-level space boundaries (`IfcRelSpaceBoundary`) and all property sets enabled.
-A Python pipeline then converts each IFC file into a graph and loads it into Neo4j:
+A Python pipeline — in
+[`thesis-iaac/10_IFC_TO_GRAPH`](https://github.com/libnypacheco/thesis-iaac/tree/main/10_IFC_TO_GRAPH) —
+then converts each IFC file into a graph and loads it into Neo4j:
 
 - **[IfcOpenShell](https://ifcopenshell.org/)** parses the IFC and extracts explicit data —
   elements, attributes, and relationships such as `ContainedIn`
@@ -281,7 +298,7 @@ iterative mapping work.
 - **Database**: Neo4j, queried through the Neo4j JavaScript driver
 - **LLM**: OpenAI GPT-4o (Google Vertex Gemini and AWS Bedrock Claude also supported)
 - **Charts**: ECharts for React
-- **Graph building (separate pipeline)**: Python, IfcOpenShell, TopologicPy
+- **Graph building** ([separate pipeline](https://github.com/libnypacheco/thesis-iaac/tree/main/10_IFC_TO_GRAPH)): Python, IfcOpenShell, TopologicPy
 
 ---
 
@@ -296,6 +313,9 @@ Professor Wasim Jabi (TopologicPy). Thanks to White Arkitekter — Peter Lechouv
 Diaz, Martin Johnson, John Nordman and Zebastian Olsson — for access to the Revit archive.
 
 Built on [NeoConverse](https://github.com/neo4j-labs/neoconverse) by Neo4j Labs.
+
+The full body of thesis work — pipeline, data and experiments — is archived in
+[`libnypacheco/thesis-iaac`](https://github.com/libnypacheco/thesis-iaac).
 
 ### Key references
 
